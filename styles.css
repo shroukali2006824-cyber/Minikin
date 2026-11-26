@@ -114,6 +114,9 @@ img { max-width: 100%; display: block; }
   width: 24px; height: 3px; border-radius: 2px; background: var(--slate-700);
   transition: all 0.25s ease;
 }
+.nav-toggle.open span:nth-child(1) { transform: translateY(8px) rotate(45deg); }
+.nav-toggle.open span:nth-child(2) { opacity: 0; }
+.nav-toggle.open span:nth-child(3) { transform: translateY(-8px) rotate(-45deg); }
 
 /* ---------- Hero section ---------- */
 .hero {
@@ -402,12 +405,22 @@ body.overlay-on .ba-item .align-overlay { opacity: 1; }
 @media (max-width: 720px) {
   .nav-links {
     position: absolute; top: 100%; inset-inline: 0;
-    flex-direction: column; background: #fff;
+    flex-direction: column; align-items: stretch;
+    background: #fff;
     border-bottom: 1px solid var(--border);
-    padding: 10px 4%; gap: 2px;
+    box-shadow: 0 14px 28px rgba(15, 23, 42, 0.10);
+    padding: 6px 0; gap: 0;
     display: none;
+    z-index: 99;
   }
   .nav-links.open { display: flex; }
+  .nav-links a, .nav-links .admin-login-link {
+    display: block; width: 100%; text-align: start;
+    padding: 14px 22px; border-radius: 0;
+    border-top: 1px solid var(--border);
+  }
+  .nav-links a:first-child { border-top: 0; }
+  .nav-links a:hover, .nav-links .admin-login-link:hover { background: var(--blue-50); color: var(--blue-600); }
   .nav-toggle { display: flex; }
   .nav-cta { display: none; }
   .stats-grid { grid-template-columns: 1fr; }
@@ -425,3 +438,8 @@ body.is-admin a.btn.admin-only { display: inline-flex !important; }
 .admin-login-link { background: none; border: 0; color: inherit; font: inherit; cursor: pointer; opacity: .7; padding: 0 .5rem; }
 .admin-login-link:hover { opacity: 1; }
 .nav-links a, .admin-login-link { white-space: nowrap; }
+
+/* On small screens the "+ Add Case" CTA stays hidden for admins too; the menu lists Add New Case instead */
+@media (max-width: 720px) {
+  body.is-admin a.btn.nav-cta { display: none !important; }
+}
