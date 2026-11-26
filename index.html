@@ -29,10 +29,11 @@
         <a href="#about">About Minikin</a>
         <a href="#how">How It Works</a>
         <a href="#registry">Patient Registry: Before / After</a>
-        <a href="#add">Add New Case</a>
+        <a href="#add" class="admin-only">Add New Case</a>
+        <button type="button" class="admin-login-link" id="adminToggle">Admin</button>
       </nav>
 
-      <a href="#add" class="btn btn-primary nav-cta">+ Add Case</a>
+      <a href="#add" class="btn btn-primary nav-cta admin-only">+ Add Case</a>
     </div>
   </header>
 
@@ -49,7 +50,7 @@
           </p>
           <div class="hero-ctas">
             <a href="#registry" class="btn btn-primary btn-lg">Browse Case Registry</a>
-            <a href="#add" class="btn btn-outline btn-lg">Add a New Case</a>
+            <a href="#add" class="btn btn-outline btn-lg admin-only">Add a New Case</a>
           </div>
         </div>
         <div class="hero-visual" aria-hidden="true">
@@ -165,7 +166,7 @@
           <button class="btn btn-outline" id="overlayToggle" aria-pressed="false">
             📐 Alignment line: <span id="overlayState">Off</span>
           </button>
-          <button class="btn btn-ghost" id="restoreSamples">↺ Restore sample cases</button>
+          <button class="btn btn-ghost admin-only" id="restoreSamples">↺ Restore sample cases</button>
         </div>
 
         <!-- Patient cards grid -->
@@ -175,7 +176,7 @@
     </section>
 
     <!-- ===== Add new case form ===== -->
-    <section class="section section-alt" id="add">
+    <section class="section section-alt admin-only" id="add">
       <div class="container">
         <h2 class="section-title">Add a New Case</h2>
         <p class="section-sub">Register a case that used Minikin, with before/after photos (optional), to track progress.</p>
