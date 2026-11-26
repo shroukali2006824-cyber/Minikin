@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Minikin | Smart Posture &amp; Spinal Alignment Device</title>
+  <meta name="description" content="Minikin - a smart, non-invasive wearable device supporting spinal alignment correction and posture improvement, with a registry to track cases before and after use." />
+  <!-- Clean fonts (load when online, with automatic system fallbacks) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+  <!-- ===== Sticky top navigation bar ===== -->
+  <header class="navbar" id="top">
+    <div class="container nav-inner">
+      <a class="brand" href="#top" aria-label="Minikin - Home">
+        <img src="minikin-logo.png" alt="Minikin logo" class="brand-logo" />
+        <span class="brand-name">Minikin</span>
+      </a>
+
+      <button class="nav-toggle" id="navToggle" aria-label="Open menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+
+      <nav class="nav-links" id="navLinks" aria-label="Main navigation">
+        <a href="#about">About Minikin</a>
+        <a href="#how">How It Works</a>
+        <a href="#registry">Patient Registry: Before / After</a>
+        <a href="#add">Add New Case</a>
+      </nav>
+
+      <a href="#add" class="btn btn-primary nav-cta">+ Add Case</a>
+    </div>
+  </header>
+
+  <main>
+    <!-- ===== Hero section ===== -->
+    <section class="hero">
+      <div class="container hero-inner">
+        <div class="hero-text">
+          <span class="hero-badge">Smart, non-invasive technology</span>
+          <h1>Better posture, <span class="grad-text">greater confidence</span> with Minikin</h1>
+          <p class="hero-sub">
+            Minikin is a smart wearable device that supports spinal alignment correction
+            and posture improvement, with documented before-and-after progress tracking for every case.
+          </p>
+          <div class="hero-ctas">
+            <a href="#registry" class="btn btn-primary btn-lg">Browse Case Registry</a>
+            <a href="#add" class="btn btn-outline btn-lg">Add a New Case</a>
+          </div>
+        </div>
+        <div class="hero-visual" aria-hidden="true">
+          <img src="minikin-logo.png" alt="" class="hero-logo" />
+        </div>
+      </div>
+
+      <!-- Stat cards: computed live from the current registry data -->
+      <div class="container">
+        <div class="stats-grid" id="statsGrid" aria-label="Registry statistics">
+          <div class="stat-card">
+            <span class="stat-num" id="statCount">0</span>
+            <span class="stat-label">Registered cases</span>
+          </div>
+          <div class="stat-card">
+            <span class="stat-num" id="statAvg">—</span>
+            <span class="stat-label">Average improvement across cases</span>
+          </div>
+          <div class="stat-card">
+            <span class="stat-num" id="statWeeks">—</span>
+            <span class="stat-label">Average follow-up duration (weeks)</span>
+          </div>
+        </div>
+        <p class="stats-note">The statistics above are computed only from the cases registered on this page (demo data for illustration).</p>
+      </div>
+    </section>
+
+    <!-- ===== About Minikin ===== -->
+    <section class="section" id="about">
+      <div class="container">
+        <h2 class="section-title">About Minikin</h2>
+        <p class="section-sub">A smart wearable frame that supports spinal alignment comfortably and safely.</p>
+        <div class="cards-3">
+          <article class="info-card">
+            <div class="info-icon">🦴</div>
+            <h3>Alignment Support</h3>
+            <p>Helps guide the body toward a healthy upright posture while worn, as a complement to a treatment plan.</p>
+          </article>
+          <article class="info-card">
+            <div class="info-icon">☁️</div>
+            <h3>Comfortable to Wear</h3>
+            <p>A light, flexible design suited to daily use, with comfortable materials that don't restrict natural movement.</p>
+          </article>
+          <article class="info-card">
+            <div class="info-icon">📈</div>
+            <h3>Documented Progress</h3>
+            <p>A digital registry to compare posture before and after use, with a visual alignment line that makes progress easy to assess.</p>
+          </article>
+        </div>
+        <div class="disclaimer">
+          <strong>Important note:</strong>
+          The records shown and entered on this page are for posture tracking and documentation only,
+          and are not a substitute for consultation, diagnosis, or a treatment plan from a qualified specialist.
+          The default sample cases shown are not real patients.
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== How it works ===== -->
+    <section class="section section-alt" id="how">
+      <div class="container">
+        <h2 class="section-title">How does Minikin work?</h2>
+        <p class="section-sub">Three simple steps from wearing to tracking.</p>
+        <div class="steps">
+          <div class="step">
+            <span class="step-num">1</span>
+            <h3>Wear &amp; Adjust</h3>
+            <p>The device is worn on the body and adjusted to the user's fit to gently support an upright posture.</p>
+          </div>
+          <div class="step-arrow" aria-hidden="true">→</div>
+          <div class="step">
+            <span class="step-num">2</span>
+            <h3>Daily Use</h3>
+            <p>Worn for set hours each day as guided by a specialist, with a comfortable design that doesn't limit movement.</p>
+          </div>
+          <div class="step-arrow" aria-hidden="true">→</div>
+          <div class="step">
+            <span class="step-num">3</span>
+            <h3>Track Progress</h3>
+            <p>Posture photos before and after a period of use are logged in the registry for a visual alignment comparison.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== Patient registry & before/after ===== -->
+    <section class="section" id="registry">
+      <div class="container">
+        <h2 class="section-title">Patient Registry &amp; Before / After Tracking</h2>
+        <p class="section-sub">Compare posture before and after using Minikin, with a visual alignment line to assess positioning.</p>
+
+        <div class="sample-banner">
+          ⓘ The default cases shown are <strong>demo data for illustration only</strong> and are not real patients.
+        </div>
+
+        <!-- Search and filter controls -->
+        <div class="registry-controls">
+          <div class="control-group grow">
+            <label for="searchInput" class="sr-only">Search by name or notes</label>
+            <input type="search" id="searchInput" placeholder="🔎 Search by name, case code, or notes…" />
+          </div>
+          <div class="control-group">
+            <label for="filterSelect" class="sr-only">Filter by condition type</label>
+            <select id="filterSelect">
+              <option value="all">All</option>
+              <option value="Significant improvement">Significant improvement</option>
+              <option value="Under follow-up">Under follow-up</option>
+              <option value="Scoliosis">Scoliosis</option>
+              <option value="Kyphosis">Kyphosis</option>
+              <option value="Shoulder tilt">Shoulder tilt</option>
+            </select>
+          </div>
+          <button class="btn btn-outline" id="overlayToggle" aria-pressed="false">
+            📐 Alignment line: <span id="overlayState">Off</span>
+          </button>
+          <button class="btn btn-ghost" id="restoreSamples">↺ Restore sample cases</button>
+        </div>
+
+        <!-- Patient cards grid -->
+        <div class="patients-grid" id="patientsGrid" aria-live="polite"></div>
+        <p class="empty-state" id="emptyState" hidden>No cases match the current search or filter.</p>
+      </div>
+    </section>
+
+    <!-- ===== Add new case form ===== -->
+    <section class="section section-alt" id="add">
+      <div class="container">
+        <h2 class="section-title">Add a New Case</h2>
+        <p class="section-sub">Register a case that used Minikin, with before/after photos (optional), to track progress.</p>
+
+        <form class="patient-form" id="patientForm" novalidate>
+          <div class="form-grid">
+            <div class="form-field">
+              <label for="fName">Patient name / case code <span class="req">*</span></label>
+              <input type="text" id="fName" name="name" required maxlength="60" placeholder="e.g. Case #7" />
+              <small class="field-error" data-error-for="fName"></small>
+            </div>
+
+            <div class="form-field">
+              <label for="fAge">Age <span class="req">*</span></label>
+              <input type="number" id="fAge" name="age" required min="3" max="100" placeholder="e.g. 14" />
+              <small class="field-error" data-error-for="fAge"></small>
+            </div>
+
+            <div class="form-field">
+              <label for="fType">Condition type <span class="req">*</span></label>
+              <select id="fType" name="type" required>
+                <option value="">Select type…</option>
+                <option value="Scoliosis">Scoliosis</option>
+                <option value="Kyphosis">Kyphosis (rounded back)</option>
+                <option value="Shoulder tilt">Shoulder tilt</option>
+                <option value="Other">Other</option>
+              </select>
+              <small class="field-error" data-error-for="fType"></small>
+            </div>
+
+            <div class="form-field">
+              <label for="fStatus">Current status <span class="req">*</span></label>
+              <select id="fStatus" name="status" required>
+                <option value="Under follow-up">Under follow-up</option>
+                <option value="Significant improvement">Significant improvement</option>
+              </select>
+              <small class="field-error" data-error-for="fStatus"></small>
+            </div>
+
+            <div class="form-field">
+              <label for="fWeeks">Duration of Minikin use (weeks) <span class="req">*</span></label>
+              <input type="number" id="fWeeks" name="weeks" required min="1" max="104" placeholder="e.g. 8" />
+              <small class="field-error" data-error-for="fWeeks"></small>
+            </div>
+
+            <div class="form-field">
+              <label for="fImprovement">Estimated improvement (%) — optional</label>
+              <input type="number" id="fImprovement" name="improvement" min="0" max="100" placeholder="e.g. 40" />
+              <small class="field-error" data-error-for="fImprovement"></small>
+            </div>
+
+            <div class="form-field full">
+              <label for="fNotes">Improvement description or notes</label>
+              <textarea id="fNotes" name="notes" rows="3" maxlength="400" placeholder="Short notes about the case and progress…"></textarea>
+            </div>
+
+            <div class="form-field">
+              <label for="fBefore">"Before" photo (optional)</label>
+              <input type="file" id="fBefore" name="before" accept="image/*" />
+              <small class="field-hint">If left empty, an automatic illustration is used.</small>
+            </div>
+
+            <div class="form-field">
+              <label for="fAfter">"After" photo (optional)</label>
+              <input type="file" id="fAfter" name="after" accept="image/*" />
+              <small class="field-hint">If left empty, an automatic illustration is used.</small>
+            </div>
+          </div>
+
+          <div class="form-actions">
+            <button type="submit" class="btn btn-primary btn-lg">Save Case to Registry</button>
+            <button type="reset" class="btn btn-ghost">Clear Fields</button>
+          </div>
+          <p class="form-success" id="formSuccess" hidden>✅ Case saved successfully and added to the registry.</p>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <!-- ===== Case details modal ===== -->
+  <div class="modal-backdrop" id="modalBackdrop" hidden>
+    <div class="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+      <button class="modal-close" id="modalClose" aria-label="Close">✕</button>
+      <h3 id="modalTitle">Case details</h3>
+      <div class="modal-body" id="modalBody"></div>
+    </div>
+  </div>
+
+  <footer class="footer">
+    <div class="container footer-inner">
+      <div class="footer-brand">
+        <img src="minikin-logo.png" alt="Minikin logo" class="brand-logo small" />
+        <span>Minikin</span>
+      </div>
+      <p>An informational page and posture tracker — it does not provide medical advice and is not a substitute for a qualified specialist.</p>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
