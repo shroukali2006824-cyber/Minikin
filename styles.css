@@ -416,3 +416,12 @@ body.overlay-on .ba-item .align-overlay { opacity: 1; }
   .registry-controls .btn { flex: 1 1 100%; }
   .section { padding: 52px 0; }
 }
+
+/* ---------- Admin mode ---------- */
+.admin-only { display: none !important; }
+body.is-admin .admin-only { display: revert !important; }
+body.is-admin section.admin-only { display: block !important; }
+body.is-admin a.btn.admin-only { display: inline-flex !important; }
+.admin-login-link { background: none; border: 0; color: inherit; font: inherit; cursor: pointer; opacity: .7; padding: 0 .5rem; }
+.admin-login-link:hover { opacity: 1; }
+.nav-links a, .admin-login-link { white-space: nowrap; }
