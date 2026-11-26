@@ -280,7 +280,7 @@ function renderPatients() {
       </p>
       <div class="patient-actions">
         <button class="btn btn-outline" data-action="view" data-id="${p.id}">View Details</button>
-        <button class="btn btn-danger" data-action="delete" data-id="${p.id}">Delete</button>
+        ${isAdmin ? `<button class="btn btn-danger" data-action="delete" data-id="${p.id}">Delete</button>` : ""}
       </div>`;
     grid.appendChild(card);
   });
@@ -307,6 +307,7 @@ filterSelect.addEventListener("change", renderPatients);
 
 /* ---------- Restore sample cases ---------- */
 restoreBtn.addEventListener("click", () => {
+  if (!isAdmin) return;
   if (confirm("This will replace the current registry with the default sample cases. Continue?")) {
     patients = samplePatients();
     saveState();
@@ -356,7 +357,7 @@ grid.addEventListener("click", (e) => {
 
   if (btn.dataset.action === "view") {
     openModal(p);
-  } else if (btn.dataset.action === "delete") {
+  } else if (btn.dataset.action === "delete" && isAdmin) {
     if (confirm(`Delete "${p.name}" from the registry?`)) {
       patients = patients.filter((x) => x.id !== p.id);
       saveState();
@@ -418,6 +419,7 @@ function validateForm(data) {
 /* ---------- Form submission ---------- */
 form.addEventListener("submit", async (e) => {
   e.preventDefault();
+  if (!isAdmin) return;
   formSuccess.hidden = true;
 
   const data = {
@@ -475,8 +477,41 @@ navLinks.addEventListener("click", (e) => {
   }
 });
 
+/* ---------- Admin mode (owner only) ---------- */
+// Note: this is a static site with no server, so this is a soft lock, not real security.
+const ADMIN_HASH = "47166a285948b6eb9874f03008c16ad0ccc8ae7bd961be16a02cd3100e73f376";
+let isAdmin = sessionStorage.getItem("minikinAdmin") === ADMIN_HASH;
+async function hashPw(pw) {
+  const buf = await crypto.subtle.digest("SHA-256", new TextEncoder().encode("minikin-admin:" + pw));
+  return Array.from(new Uint8Array(buf)).map((b) => b.toString(16).padStart(2, "0")).join("");
+}
+const adminToggle = document.getElementById("adminToggle");
+function applyAdmin() {
+  document.body.classList.toggle("is-admin", isAdmin);
+  adminToggle.textContent = isAdmin ? "Log out" : "Admin";
+}
+adminToggle.addEventListener("click", async () => {
+  if (isAdmin) {
+    isAdmin = false;
+    sessionStorage.removeItem("minikinAdmin");
+  } else {
+    const pw = prompt("Admin password:");
+    if (!pw) return;
+    if ((await hashPw(pw)) === ADMIN_HASH) {
+      isAdmin = true;
+      sessionStorage.setItem("minikinAdmin", ADMIN_HASH);
+    } else {
+      alert("Wrong password.");
+      return;
+    }
+  }
+  applyAdmin();
+  renderPatients();
+});
+
 /* ---------- Initial run ---------- */
 loadState();
 loadOverlayPref();
+applyAdmin();
 renderPatients();
 renderStats();
