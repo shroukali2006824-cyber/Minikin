@@ -244,7 +244,7 @@ img { max-width: 100%; display: block; }
 
 /* Cards grid */
 .patients-grid {
-  display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  display: grid; grid-template-columns: repeat(auto-fill, minmax(min(320px, 100%), 1fr));
   gap: 22px;
 }
 .patient-card {
@@ -442,4 +442,14 @@ body.is-admin a.btn.admin-only { display: inline-flex !important; }
 /* On small screens the "+ Add Case" CTA stays hidden for admins too; the menu lists Add New Case instead */
 @media (max-width: 720px) {
   body.is-admin a.btn.nav-cta { display: none !important; }
+}
+
+/* ---------- Mobile overflow guard: page never scrolls or shifts sideways ---------- */
+html, body { max-width: 100%; overflow-x: hidden; }
+@supports (overflow: clip) { html, body { overflow-x: clip; } }
+.patient-card, .ba-wrap, .patient-head, .patient-actions, .registry-grid > * { min-width: 0; }
+.patient-head { flex-wrap: wrap; gap: 8px; }
+.patient-card, .modal { overflow-wrap: anywhere; }
+@media (max-width: 720px) {
+  .patient-actions { flex-wrap: wrap; }
 }
