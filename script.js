@@ -466,15 +466,18 @@ form.addEventListener("submit", async (e) => {
 });
 
 /* ---------- Mobile menu ---------- */
-navToggle.addEventListener("click", () => {
-  const open = navLinks.classList.toggle("open");
+function setMenu(open) {
+  navLinks.classList.toggle("open", open);
+  navToggle.classList.toggle("open", open);
   navToggle.setAttribute("aria-expanded", String(open));
-});
+  navToggle.setAttribute("aria-label", open ? "Close menu" : "Open menu");
+}
+navToggle.addEventListener("click", () => setMenu(!navLinks.classList.contains("open")));
 navLinks.addEventListener("click", (e) => {
-  if (e.target.tagName === "A") {
-    navLinks.classList.remove("open");
-    navToggle.setAttribute("aria-expanded", "false");
-  }
+  if (e.target.tagName === "A") setMenu(false);
+});
+document.addEventListener("click", (e) => {
+  if (navLinks.classList.contains("open") && !e.target.closest(".nav-inner")) setMenu(false);
 });
 
 /* ---------- Admin mode (owner only) ---------- */
